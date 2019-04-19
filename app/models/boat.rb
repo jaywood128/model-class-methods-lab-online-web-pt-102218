@@ -29,4 +29,11 @@ class Boat < ActiveRecord::Base
     order(:name).last(3).reverse
   end
 
+  def self.without_a_captain 
+    Boat.where(captain: nil)
+  end 
+
+  def self.sailboats 
+    includes(:classifications).where(classifications: {name: 'Sailboat' } ) 
+  end
 end
