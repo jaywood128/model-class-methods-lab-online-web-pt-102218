@@ -40,4 +40,8 @@ class Boat < ActiveRecord::Base
   def self.with_three_classifications 
     self.all.select {|b| b.classifications.count >= 3} 
   end 
+
+  def self.longest
+    order(length: :desc).first
+  end
 end
